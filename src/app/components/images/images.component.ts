@@ -12,7 +12,7 @@ import { ImagesService } from 'src/app/services/images.service';
       transition('* => *', [
         query(':enter', style({ opacity: 0 }), {optional: true}),
 
-        query(':enter', stagger('100ms' ,[
+        query(':enter', stagger('400ms' ,[
           animate('1s ease-in', keyframes([
             style({ opacity: 0, transform: 'translateX(-75px)', offset: 0 }),
             style({ opacity: 0.5, transform: 'translateX(35px)', offset: 0.3 }),
@@ -38,8 +38,10 @@ export class ImagesComponent implements OnInit {
   getImages():void {
     this.isLoading = true;
     this.imagesServices.getAllImages().subscribe((images) => {    
-      this.images = images;       
-      this.isLoading = false;      
+      this.images = images;
+      setTimeout(() => {
+        this.isLoading = false; 
+      }, 1000);
     });
   }
 
