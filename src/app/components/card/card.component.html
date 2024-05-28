@@ -1,0 +1,9 @@
+<mat-card class="example-card">
+    <mat-card-header>    
+        <mat-card-title>Title: {{ image.alt_description }}</mat-card-title>
+        <mat-card-subtitle class="badge">
+            {{ image.id }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="img-fluid" src="{{image.urls.small}}" alt="">
+</mat-card>

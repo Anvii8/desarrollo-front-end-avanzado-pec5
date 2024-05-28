@@ -32,15 +32,51 @@
   ],
   "dataGroups": [
     {
-      "name": "image-api",
+      "name": "list-image-api",
       "urls": [
-        "https://picsum.photos/**"
+        "https://api.unsplash.com/photos?client_id=Vy8kHagLbG9YD7CwgFZbq_OPfNah-dbNOWnikN5CUzA"
       ],
       "cacheConfig": {
         "maxSize": 10,
         "maxAge": "1h",
         "timeout": "1s",
-        "strategy": "freshness"
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "info-image-api",
+      "urls": [
+        "https://api.unsplash.com/photos/**?client_id=Vy8kHagLbG9YD7CwgFZbq_OPfNah-dbNOWnikN5CUzA"
+      ],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "1h",
+        "timeout": "1s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "icons-api",
+      "urls": [
+        "https://fonts.gstatic.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "1h",
+        "timeout": "1s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "image-api",
+      "urls": [
+        "https://images.unsplash.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "1h",
+        "timeout": "1s",
+        "strategy": "performance"
       }
     }
   ]

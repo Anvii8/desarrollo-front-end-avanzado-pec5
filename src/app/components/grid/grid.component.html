@@ -1,0 +1,15 @@
+<mat-table [dataSource]="images">
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let image">{{ image.id }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>TITLE</mat-header-cell>
+        <mat-cell *matCellDef="let image">{{ image.alt_description }}</mat-cell>
+    </ng-container>
+        
+    <mat-header-row *matHeaderRowDef="['id', 'title']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id', 'title']" [routerLink]="['/image', row.id]" class="clickable-row"></mat-row>
+</mat-table>

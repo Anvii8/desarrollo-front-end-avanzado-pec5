@@ -1,8 +1,29 @@
 <div class="container">
+
     <h1>Images</h1>
-    <ul class="list-group">
-        <a *ngFor="let image of images" [routerLink]="['/image', image.id]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn">
-            {{image.id}} - {{image.author}}
+    
+    <mat-button-toggle-group>
+        <mat-button-toggle (click)="showCards()"><mat-icon>dataset</mat-icon></mat-button-toggle>
+        <mat-button-toggle (click)="showTable()"><mat-icon>format_list_bulleted</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <div *ngIf="isLoading" class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <!--TABLA-->
+    <div *ngIf="showtable" [@fadeInOut]="images.length">
+        <app-grid [images] = "images"></app-grid>
+    </div>
+
+    <!--CARDS-->
+    <div class="content" *ngIf="showcard" [@fadeInOut]="images.length">
+        <a *ngFor="let image of images" [routerLink]="['/image', image.id]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn" style="width: 400px">
+            <app-card [image] = "image"></app-card>
         </a>
-    </ul>
+    </div>
 </div>
+
+
+
+

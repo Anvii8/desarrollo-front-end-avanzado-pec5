@@ -1,15 +1,63 @@
 <div class="container mt-5">
-    <div *ngIf="image" class="row animate__animated animate__bounce animate__fadeIn">
-        <div class="col-md-9">
-            <p><strong>Identifier:</strong> {{image.id}}</p>
-            <p><strong>Author:</strong> {{image.author}}</p>
-            <p><strong>Size:</strong> {{image.width}} - {{image.height}}</p>
-            <p><strong>UrL:</strong> {{image.url}}</p>
-            <img style="width: 80%; height: 80%;" class="rounded" src="{{image.download_url}}" alt="">
+    <div *ngIf="image">
+        <div class="row row-cols-2">
+            <div class="col"><strong>Title:</strong> {{image.slug}}</div>
+            <div class="col"><button mat-raised-button routerLink="/" color="warn">Back</button></div>
+            <div class="col"><button mat-raised-button (click)="showDetails(true)" *ngIf="!showdetails">Show all details</button></div>
         </div>
+       
+        <mat-tab-group *ngIf="showdetails">
+            <mat-tab label="Identifiers">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Id: </strong> {{image.id}}</li>
+                    <li class="list-group-item"><strong>Title: </strong> {{image.alt_description}}</li>
+                </ul>
+            </mat-tab>
+            <mat-tab label="Information">
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Size</mat-panel-title>
+                            <mat-panel-description>Size of the image</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p><strong>Width: </strong>{{image.width}}px</p>
+                        <p><strong>Height: </strong>{{image.height}}px</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Created At</mat-panel-title>
+                            <mat-panel-description>Date when the image was created</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p><strong>Date: </strong>{{image.created_at}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>User</mat-panel-title>
+                            <mat-panel-description>Information of the User</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p><strong>Name: </strong>{{image.user.name}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Description</mat-panel-title>
+                            <mat-panel-description>Description of the image</mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p><strong>Description: </strong>{{image.description}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-tab>
+            <mat-tab label="Image">
+                <img class="img-fluid" src="{{image.urls.small}}" alt="">
+            </mat-tab>
+        </mat-tab-group>
 
-        <div class="col-md-3">
-            <a class="btn btn-danger" routerLink="/">Back</a>
-        </div>
+        <div class="col mt-5"><button mat-raised-button (click)="showDetails(false)" *ngIf="showdetails">Show all details</button></div>
+
     </div>
 </div>

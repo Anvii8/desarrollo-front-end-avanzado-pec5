@@ -1,8 +1,20 @@
 export interface Image{
     id: string;
-    author: string;
+    alt_description: string;
     width: number;
     height: number;
-    url: string;
-    download_url: string;
+    urls: urls;
+    likes: number;
+    user: user;
+    description: string;
+    created_at: string;
+    slug: string
+}
+
+export interface urls{
+    small: string;
+    regular: string;
+}
+export interface user{
+    name: string;
 }

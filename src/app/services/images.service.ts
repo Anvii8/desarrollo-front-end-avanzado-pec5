@@ -8,13 +8,17 @@ import { Image } from '../models/image.interface';
 })
 export class ImagesService {
 
-  constructor(private http: HttpClient) { }
+  accessKey: string;
+
+  constructor(private http: HttpClient) { 
+    this.accessKey = "?client_id=Vy8kHagLbG9YD7CwgFZbq_OPfNah-dbNOWnikN5CUzA";
+  }
 
   getAllImages(): Observable<Image[]> {
-    return this.http.get<Image[]>('https://picsum.photos/v2/list');
+    return this.http.get<Image[]>('https://api.unsplash.com/photos'+ this.accessKey);
   }
 
   getImageById(id: String): Observable<Image> {
-    return this.http.get<Image>('https://picsum.photos/id/' + id + '/info');
+    return this.http.get<Image>('https://api.unsplash.com/photos/' + id + this.accessKey);
   }
 }

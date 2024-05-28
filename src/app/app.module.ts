@@ -8,12 +8,25 @@ import { ImageComponent } from './components/image/image.component';
 
 import{ HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CardComponent } from './components/card/card.component';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImagesComponent,
-    ImageComponent
+    ImageComponent,
+    CardComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +37,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    MatTableModule,
+    MatIconModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
